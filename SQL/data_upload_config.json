@@ -1,0 +1,9 @@
+{
+    "file_path": "./Data/",
+    "list_of_tables": "['traffic_incidents', 'estimated_travel_times', 'faulty_traffic_lights', 'road_openings', 'road_works', 'carpark_avail', 'bus_routes', 'bus_stops', 'taxi_availability', 'taxi_stands', 'traffic_speed_bands']",
+    "user": "root",
+    "password": "root",
+    "host": "localhost",
+    "db": "competition"
+}
+     
