@@ -25,7 +25,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the built React app from the previous stage
-COPY --from=build-stage /usr/src/app/build /app/static
+COPY --from=build-stage /usr/src/app/dist /app/static
 
 # Copy Python app source
 COPY . .
