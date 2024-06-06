@@ -13,6 +13,9 @@
 - id: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/gradio-app']
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 images:
 - 'gcr.io/$PROJECT_ID/react-app'
 - 'gcr.io/$PROJECT_ID/gradio-app'
@@ -21,9 +24,6 @@ substitutions:
   _REGION: 'us-central1'
 
 timeout: '900s'
-
-options:
-logging: 'CLOUD_LOGGING_ONLY'
 
 - id: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
