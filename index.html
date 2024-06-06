@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Example:</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+      #app {
+        width: 100vw;
+        height: 100vh;
+      }
+      .directions {
+        position: absolute;
+        top: 10px; /* Distance from the top of the container */
+        right: 10px; /* Distance from the right of the container */
+        width: 300px; /* Fixed width, adjust based on content */
+        height: auto; /* Height based on content */
+        padding: 10px;
+        background-color: white; /* Visible against potentially dark map background */
+        border: 1px solid #ccc; /* Subtle border */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* Soft shadow for better visibility */
+        overflow: auto; /* Ensures content is scrollable if it overflows */
+        z-index: 1000; /* Makes sure it sits on top of other elements */
+      }
+    </style>
+  </head>
+  <body>
+
+    
+    <div id="app"></div>
+    <script type="module">
+      import '@vis.gl/react-google-maps/examples.css';
+      import '@vis.gl/react-google-maps/examples.js';
+      import {renderToDom} from './src/app';
+
+      renderToDom(document.querySelector('#app'));
+    </script>
+  </body>
+</html>
