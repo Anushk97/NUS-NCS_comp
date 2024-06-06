@@ -23,7 +23,7 @@ substitutions:
 timeout: '900s'
 
 options:
-      logging: GCS_ONLY
+  logging: 'CLOUD_LOGGING_ONLY'
 
 - id: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
