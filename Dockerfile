@@ -14,6 +14,8 @@ COPY . .
 # Build the app
 RUN npm run build
 
+RUN ls -la /usr/src/app/dist
+
 # Stage 2: Set up the Python app
 FROM python:3.9
 
