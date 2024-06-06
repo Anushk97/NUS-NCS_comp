@@ -2,6 +2,7 @@ from openai import OpenAI
 import gradio as gr
 import fastapi
 import json
+import os
 
 config=None
 with open (".config.json",'r') as f:
@@ -191,13 +192,16 @@ def routeQuery(text):
 
 def generateHTMLText(routeQueryReturnText):
     try:
-        if routeQueryReturnText!=None:
-            return("<iframe src=http://localhost:5173/?body="+routeQueryReturnText+" width=100%% height=560px></iframe>")
+        host = os.getenv('HOST', 'localhost')
+        port = os.getenv('PORT', '5173')
+        base_url = f"http://{host}:{port}"
+
+        if routeQueryReturnText:
+            return f"<iframe src={base_url}/?body={routeQueryReturnText} width=100%% height=560px></iframe>"
         else:
-            return("<iframe src=http://localhost:5173/ width=100%% height=560px></iframe>")
-            
-    except:
-        return("<iframe src=http://localhost:5173/ width=100%% height=560px></iframe>")
+            return f"<iframe src={base_url}/ width=100%% height=560px></iframe>"
+    except Exception as e:
+        return f"<iframe src={base_url}/ width=100%% height=560px></iframe>"
 
 def submitFreeQueryTextbox(history,text):
     intentionTypeNumber=intentionClassifier(text)
@@ -363,6 +367,6 @@ with gr.Blocks(title="BooleanPirates") as demo:
         outputs=[globalJsonBuffer,rootTabs,freeQueryTextbox]
     )
 
-demo.launch(server_name="0.0.0.0",server_port=7921)
+demo.launch(server_name="0.0.0.0",server_port=8080)
 
 # input()
