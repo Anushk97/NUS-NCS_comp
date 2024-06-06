@@ -1,5 +1,5 @@
-# Base image
-FROM node:14 as build-stage
+# Stage 1: Build the React app
+FROM node:14 AS build-stage
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -14,11 +14,13 @@ COPY . .
 # Build the app
 RUN npm run build
 
-# Create a second stage for the Python application
+# Stage 2: Set up the Python app
 FROM python:3.9
 
-# Install dependencies
+# Set working directory
 WORKDIR /app
+
+# Install dependencies
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
