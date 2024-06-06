@@ -1,16 +1,16 @@
-steps:
-- name: 'gcr.io/cloud-builders/docker'
+  steps:
+- id: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/react-app', '-f', 'Dockerfile.react', '.']
   dir: '.'
 
-- name: 'gcr.io/cloud-builders/docker'
+- id: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/gradio-app', '-f', 'Dockerfile.gradio', '.']
   dir: '.'
 
-- name: 'gcr.io/cloud-builders/docker'
+- id: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/react-app']
-  
-- name: 'gcr.io/cloud-builders/docker'
+
+- id: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/gradio-app']
 
 images:
@@ -22,7 +22,7 @@ substitutions:
 
 timeout: '900s'
 
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+- id: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args:
     - '-c'
