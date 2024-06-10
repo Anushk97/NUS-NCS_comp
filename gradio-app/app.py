@@ -367,6 +367,6 @@ with gr.Blocks(title="BooleanPirates") as demo:
         outputs=[globalJsonBuffer,rootTabs,freeQueryTextbox]
     )
 
-demo.launch(server_name="0.0.0.0",server_port=7860)
+demo.launch(server_name="0.0.0.0",server_port=8080)
 
 # input()
