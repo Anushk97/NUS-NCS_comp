@@ -25,7 +25,7 @@ COPY ./gradio-app/ .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy React build to the Gradio app directory
-COPY --from=react-build /app/build ./static
+COPY --from=react-build /app/dist ./static
 
 # Expose port for Gradio
 EXPOSE 7860
