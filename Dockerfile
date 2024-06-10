@@ -6,10 +6,12 @@ WORKDIR /app
 
 # Copy React app source code
 COPY ./react-app/package*.json ./
-COPY ./react-app/ ./
 
 # Install dependencies and build React app
 RUN npm install
+
+COPY ./react-app/ ./
+
 RUN npm run build
 
 # Step 2: Set up Nginx and Gradio app
