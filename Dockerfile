@@ -1,5 +1,5 @@
 # Step 1: Build React app
-FROM node:16 as react-build
+FROM node:18 as react-build
 
 # Set working directory
 WORKDIR /app
@@ -16,7 +16,7 @@ RUN npm run build
 FROM python:3.9-slim
 
 # Install Nginx
-RUN apt-get update && apt-get install -y nginx
+RUN apt-get update && apt-get install -y nginx jq
 
 # Set working directory for Gradio app
 WORKDIR /app
