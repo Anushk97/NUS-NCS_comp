@@ -39,7 +39,7 @@ COPY ./start.sh /start.sh
 
 # Expose port for Nginx (default 80)
 EXPOSE 80
-EXPOSE 8080
+EXPOSE 7860
 
 # Start Nginx and Gradio app
 # CMD service nginx start && python app.py
