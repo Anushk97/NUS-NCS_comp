@@ -12,10 +12,13 @@ COPY ./react-app/ ./
 RUN npm install
 RUN npm run build
 
-# Step 2: Build Gradio app
+# Step 2: Set up Nginx and Gradio app
 FROM python:3.9-slim
 
-# Set working directory
+# Install Nginx
+RUN apt-get update && apt-get install -y nginx
+
+# Set working directory for Gradio app
 WORKDIR /app
 
 # Copy Gradio app source code
@@ -24,11 +27,14 @@ COPY ./gradio-app/ .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy React build to the Gradio app directory
-COPY --from=react-build /app/dist ./static
+# Copy React build to the Nginx directory
+COPY --from=react-build /app/dist /usr/share/nginx/html
 
-# Expose port for Gradio
-EXPOSE 7860
+# Copy Nginx configuration file
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Run Gradio app
-CMD ["python", "app.py"]
+# Expose port for Nginx (default 80)
+EXPOSE 80
+
+# Start Nginx and Gradio app
+CMD service nginx start && python app.py
