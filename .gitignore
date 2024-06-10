@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 .env
 /dist
-/node_modules
-.config.json
+/react-app/node_modules
+/gradio-app/.config.json
