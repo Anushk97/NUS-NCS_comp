@@ -193,7 +193,7 @@ def routeQuery(text):
 def generateHTMLText(routeQueryReturnText):
     try:
         host = os.getenv('HOST', 'localhost')
-        port = os.getenv('PORT', '5173')
+        port = os.getenv('PORT', '8080')
         base_url = f"http://{host}:{port}"
 
         if routeQueryReturnText:

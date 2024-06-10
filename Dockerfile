@@ -33,8 +33,13 @@ COPY --from=react-build /app/dist /usr/share/nginx/html
 # Copy Nginx configuration file
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
+COPY ./start.sh /start.sh
+
 # Expose port for Nginx (default 80)
 EXPOSE 80
+EXPOSE 7860
 
 # Start Nginx and Gradio app
-CMD service nginx start && python app.py
+# CMD service nginx start && python app.py
+
+CMD ["/start.sh"]
